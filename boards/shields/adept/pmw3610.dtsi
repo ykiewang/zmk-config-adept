@@ -11,6 +11,10 @@
 #define INPUT_REL_HWHEEL 0x06           /**< Relative horizontal wheel coordinate */
 #define INPUT_REL_MISC 0x09             /**< Relative misc coordinate */
 
+&spi2 {
+    status = "disabled";
+};
+
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
