@@ -1,35 +1,11 @@
-#define INPUT_EV_KEY 0x01
-#define INPUT_EV_REL 0x02
-#define INPUT_EV_ABS 0x03
-#define INPUT_EV_MSC 0x04
-#define INPUT_EV_VENDOR_START 0xf0
-#define INPUT_EV_VENDOR_STOP 0xff
-
-#define INPUT_REL_X 0x00
-#define INPUT_REL_Y 0x01
-#define INPUT_REL_WHEEL 0x08
-#define INPUT_REL_HWHEEL 0x06
-#define INPUT_REL_MISC 0x09
-
-#define INPUT_EV_KEY 0x01
-#define INPUT_EV_REL 0x02
-#define INPUT_EV_ABS 0x03
-#define INPUT_EV_MSC 0x04
-#define INPUT_EV_VENDOR_START 0xf0
-#define INPUT_EV_VENDOR_STOP 0xff
-
-#define INPUT_REL_X 0x00
-#define INPUT_REL_Y 0x01
-#define INPUT_REL_WHEEL 0x08
-#define INPUT_REL_HWHEEL 0x06
-#define INPUT_REL_MISC 0x09
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 &pinctrl {
     spi2_pmw_default: spi2_pmw_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK,  1, 13)>, // SCLK  P1.13
-                    <NRF_PSEL(SPIM_MOSI, 1, 14)>, // SDIO  P1.14
-                    <NRF_PSEL(SPIM_MISO, 1, 14)>; // SDIO  P1.14
+            psels = <NRF_PSEL(SPIM_SCK,  1, 13)>,
+                    <NRF_PSEL(SPIM_MOSI, 1, 14)>,
+                    <NRF_PSEL(SPIM_MISO, 1, 14)>;
         };
     };
     spi2_pmw_sleep: spi2_pmw_sleep {
@@ -42,22 +18,20 @@
     };
 };
 
-#include <zephyr/dt-bindings/input/input-event-codes.h>
-
 &spi2 {
     status = "okay";
     compatible = "nordic,nrf-spim";
     pinctrl-0 = <&spi2_pmw_default>;
     pinctrl-1 = <&spi2_pmw_sleep>;
     pinctrl-names = "default", "sleep";
-    cs-gpios = <&gpio1 12 GPIO_ACTIVE_LOW>; // NCS P1.12
+    cs-gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
 
     trackball: trackball@0 {
         status = "okay";
         compatible = "pixart,pmw3610-efogtech";
         reg = <0>;
         spi-max-frequency = <2000000>;
-        irq-gpios = <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // MOT P1.15
+        irq-gpios = <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         cpi = <600>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
