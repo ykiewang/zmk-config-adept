@@ -12,11 +12,11 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: b1bcc3e418bd30018fae4b18871ab4e43db9b938
+      revision: main
       import: app/west.yml
     - name: zmk-pmw3610-driver
       remote: efogdev
-      revision: main
+      revision: zephyr-4.1
     - name: zmk-input-processor-report-rate-limit
       remote: badjeff
       revision: main
