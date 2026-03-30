@@ -12,17 +12,17 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: edf5c0814fd3ea202e43aad2d68fd32e882a518c
       import: app/west.yml
     - name: zmk-pmw3610-driver
       remote: efogdev
-      revision: main
+      revision: 262c25be115eaa1ff1ebb2190550087aae2bb342
     - name: zmk-input-processor-report-rate-limit
       remote: badjeff
-      revision: main
+      revision: f43f37aae7aaa7bf0ec4d432683b873a7e3a8efa
     - name: zmk-pointing-acceleration-alpha
       remote: nuovotaka
-      revision: main
+      revision: 780dfcd6b796063367893ff41e233773e12fb07c
 
   self:
     path: config
