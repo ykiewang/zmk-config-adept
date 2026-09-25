@@ -28,10 +28,10 @@ podman run -it --rm --security-opt label=disable \
 west update
 
 # 容器内：构建固件
-west build -b xiao_ble -s zmk/app -- \
+west build -b xiao_ble/nrf52840/zmk -s zmk/app -- \
   -DZMK_CONFIG="/workspaces/zmk-config/config" \
   -DSHIELD=adept_board \
-  '-DZMK_EXTRA_MODULES=/workspaces/zmk-config;/workspace/zmk-pmw3610-driver;/workspace/zmk-input-processor-report-rate-limit;/workspace/zmk-pointing-acceleration-alpha'
+  '-DZMK_EXTRA_MODULES=/workspaces/zmk-config;/workspace/zmk-pmw3610-driver;/workspace/zmk-input-processor-report-rate-limit;/workspace/zmk-pointing-acceleration-alpha;/workspace/zmk-module-runtime-input-processor;/workspace/zmk-feature-custom-settings'
 
 # 闪烧：双击 RESET 进入 Bootloader，拖拽 build/zephyr/zmk.uf2
 ```
