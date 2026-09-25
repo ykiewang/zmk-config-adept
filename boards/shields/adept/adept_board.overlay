@@ -48,7 +48,7 @@
         device = <&trackball>;
         input-processors =
             <&pointer_accel>,
-            <&zip_ble_report_rate_limit 8>, // from badjeff's https://github.com/badjeff/zmk-input-processor-report-rate-limit/blob/main/dts/input/processors/report_rate_limit.dtsi
+            <&zip_ble_report_rate_limit>, // from efogdev's zmk-report-rate-limit@zmk-0.4; delay is Kconfig-driven (CONFIG_ZMK_INPUT_PROCESSOR_REPORT_RATE_LIMIT_DEFAULT, default 8ms)
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>;
 
         scroll {
