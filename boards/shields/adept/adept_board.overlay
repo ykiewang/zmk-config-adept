@@ -3,6 +3,7 @@
 #include "adept-layouts.dtsi"
 #include <input/processors.dtsi>
 #include <input/processors/report_rate_limit.dtsi>
+#include <input/processors/runtime-input-processor.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 #include <behaviors/input_gestures_accel.dtsi>
 
@@ -48,6 +49,7 @@
         device = <&trackball>;
         input-processors =
             <&pointer_accel>,
+            <&mouse_runtime_input_processor>, // runtime-adjustable scale/rotation/inversion via Web UI
             <&zip_ble_report_rate_limit>, // from efogdev's zmk-report-rate-limit@zmk-0.4; delay is Kconfig-driven (CONFIG_ZMK_INPUT_PROCESSOR_REPORT_RATE_LIMIT_DEFAULT, default 8ms)
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>;
 
@@ -56,7 +58,8 @@
             input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_xy_scaler 1 16>,
-            <&zip_xy_to_scroll_mapper>;
+            <&zip_xy_to_scroll_mapper>,
+            <&scroll_runtime_input_processor>; // runtime-adjustable scroll scale/axis-snap; codes match after mapper (HWHEEL/WHEEL)
         };
     };
 };
