@@ -29,7 +29,7 @@ manifest:
       revision: 780dfcd6b796063367893ff41e233773e12fb07c
     - name: zmk-module-runtime-input-processor
       remote: ykiewang
-      revision: bb430eccb905b195a0ce1b69dee66c210381aee3
+      revision: ebba97e
     - name: zmk-feature-custom-settings
       remote: cormoran
       revision: main
