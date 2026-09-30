@@ -3,7 +3,7 @@ include:
     shield: adept_board
     # snippet: zmk-usb-logging
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DNANOPB_GENERATE_CPP_APPEND_PATH=TRUE
 
   - board: xiao_ble/nrf52840/zmk
     shield: settings_reset

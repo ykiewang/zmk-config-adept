@@ -10,8 +10,6 @@ manifest:
       url-base: https://github.com/nuovotaka
     - name: cormoran
       url-base: https://github.com/cormoran
-    - name: ykiewang
-      url-base: https://github.com/ykiewang
 
   projects:
     - name: zmk
@@ -28,8 +26,8 @@ manifest:
       remote: nuovotaka
       revision: 780dfcd6b796063367893ff41e233773e12fb07c
     - name: zmk-module-runtime-input-processor
-      remote: ykiewang
-      revision: ebba97e
+      remote: cormoran
+      revision: main
     - name: zmk-feature-custom-settings
       remote: cormoran
       revision: main
