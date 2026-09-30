@@ -14,7 +14,7 @@ manifest:
   projects:
     - name: zmk
       remote: cormoran
-      revision: main
+      revision: 1fc72aaff7a42bd533c1f4c9b3f23c5317c745f4
       import: app/west.yml
     - name: zmk-pmw3610-driver
       remote: efogdev
