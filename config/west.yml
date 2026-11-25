@@ -8,7 +8,9 @@ manifest:
       url-base: https://github.com/efogdev
     - name: nuovotaka
       url-base: https://github.com/nuovotaka
-
+    - name: zmk-keybeacon
+      remote: ykiewang
+      revision: v1.2.0
   projects:
     - name: zmk
       remote: zmkfirmware
