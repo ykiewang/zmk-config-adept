@@ -8,9 +8,8 @@ manifest:
       url-base: https://github.com/efogdev
     - name: nuovotaka
       url-base: https://github.com/nuovotaka
-    - name: zmk-keybeacon
-      remote: ykiewang
-      revision: v1.2.0
+    - name: ykiewang
+      url-base: https://github.com/ykiewang
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -25,6 +24,13 @@ manifest:
     - name: zmk-pointing-acceleration-alpha
       remote: nuovotaka
       revision: 780dfcd6b796063367893ff41e233773e12fb07c
+    # KeyBeacon (KBP) — live layer/modifier/host/battery state over the host
+    # BLE link. v1.2.1 is the first release whose cmake guard links the module
+    # on a unibody (non-split) build like this one; older tags build green but
+    # compile keybeacon.c out. Pin the tag, never a branch.
+    - name: zmk-keybeacon
+      remote: ykiewang
+      revision: fix/unibody-cmake-guard
 
   self:
     path: config

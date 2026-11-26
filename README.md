@@ -2,7 +2,7 @@
 
 ZMK config for 3-pin modded Ploopy Adept BLE
 
-Features: ZMK Studio | Scroll layer | Cursor acceleration | 125Hz report rate
+Features: ZMK Studio | Scroll layer | Cursor acceleration | 125Hz report rate | KeyBeacon status over BLE
 
 ---
 
@@ -121,6 +121,19 @@ In `boards/shields/adept/adept_board.overlay`, find the `&pointer_accel` section
 - **Media**: Enter scroll layer, key 0/1/2 = play-pause / vol down / vol up
 - **BLE re-pair**: Hold all 4 upper keys
 - **Flash firmware**: Combo 0+3+4+5 for bootloader, or open the back cover and double-tap the RESET button on the MCU
+
+### KeyBeacon status over BLE
+
+The firmware ships [KeyBeacon](https://github.com/ykiewang/keybeacon) wired in: the Adept reports
+its live layer, held modifiers, host/profile connection state and battery over the host Bluetooth
+link, so a desktop app can show them without adding a screen to the keyboard.
+
+- Module: [`zmk-keybeacon`](https://github.com/ykiewang/zmk-keybeacon), pinned in
+  `config/west.yml`; the Kconfig switches live in `boards/shields/adept/adept_board.conf`.
+- Adept is unibody, so it is always the host-link role — no split-role setup needed.
+- Grab the app from the [KeyBeacon releases](https://github.com/ykiewang/keybeacon/releases)
+  (macOS / Windows). Hosts paired before the upgrade must re-pair once, because the GATT database
+  now carries the KeyBeacon service.
 
 ### How to Modify, Build and Flash
 
@@ -248,6 +261,17 @@ In `boards/shields/adept/adept_board.overlay`, find the `&pointer_accel` section
 - **媒体控制**：进入滚动层后，键 0/1/2 分别为播放暂停/音量减/音量加
 - **蓝牙重新配对**：上排四键同时按住
 - **刷固件**：同时按键 0+3+4+5 进入 Bootloader，或打开后盖双击主控上的 RESET 按钮
+
+### 通过 BLE 上报 KeyBeacon 状态
+
+固件已内置 [KeyBeacon](https://github.com/ykiewang/keybeacon)：Adept 会通过主机蓝牙链路实时上报
+当前层、按住的修饰键、主机/配对槽连接状态与电量，桌面端 app 即可显示，不需要给键盘加屏幕。
+
+- 模块：[`zmk-keybeacon`](https://github.com/ykiewang/zmk-keybeacon)，在 `config/west.yml` 中锁版本；
+  Kconfig 开关位于 `boards/shields/adept/adept_board.conf`。
+- Adept 是一体式键盘，天然就是 host-link 角色，无需分体角色配置。
+- app 见 [KeyBeacon releases](https://github.com/ykiewang/keybeacon/releases)（macOS / Windows）。
+  刷入新固件后，之前配对过的主机需要重新配对一次，因为 GATT 数据库新增了 KeyBeacon 服务。
 
 ### 如何修改代码、构建并刷入固件
 
