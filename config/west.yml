@@ -30,7 +30,7 @@ manifest:
     # compile keybeacon.c out. Pin the tag, never a branch.
     - name: zmk-keybeacon
       remote: ykiewang
-      revision: fix/unibody-cmake-guard
+      revision: v1.2.1
 
   self:
     path: config
